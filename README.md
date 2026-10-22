@@ -9,7 +9,7 @@
 
 | 구분 | 주소 |
 |---|---|
-| 배포 사이트 | (Vercel 배포 후 추가) |
+| 배포 사이트 | [kimbab-red.vercel.app](https://kimbab-red.vercel.app) |
 | 포트폴리오 요약 (12p) | [docs/kimbab-red-portfolio.pdf](docs/kimbab-red-portfolio.pdf) |
 | 기획서 전체 (37p) | [docs/kimbab-red-planning.pdf](docs/kimbab-red-planning.pdf) |
 | 피그마 | (공유 링크 추가) |
