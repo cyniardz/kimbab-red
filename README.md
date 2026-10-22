@@ -9,8 +9,9 @@
 
 | 구분 | 주소 |
 |---|---|
-| 배포 사이트 | (GitHub Pages 배포 후 추가) |
-| 기획서 | (PDF 링크 추가) |
+| 배포 사이트 | (Vercel 배포 후 추가) |
+| 포트폴리오 요약 (12p) | [docs/kimbab-red-portfolio.pdf](docs/kimbab-red-portfolio.pdf) |
+| 기획서 전체 (37p) | [docs/kimbab-red-planning.pdf](docs/kimbab-red-planning.pdf) |
 | 피그마 | (공유 링크 추가) |
 
 ## 프로젝트 개요
@@ -75,7 +76,8 @@ kimbab-red/
 ├─ index.html   화면 구조
 ├─ style.css    스타일
 ├─ script.js    화면 전환, 모달, 신청 양식, 주문 기능
-└─ img/         이미지, 챌린지 영상
+├─ img/         이미지, 챌린지 영상
+└─ docs/        포트폴리오 · 기획서 PDF
 ```
 
 ## 실행 방법
