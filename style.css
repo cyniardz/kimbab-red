@@ -1690,22 +1690,20 @@ nav {
   text-decoration: none;
   line-height: 96px;
   position: relative;
+  transition:
+    transform 0.2s ease,
+    text-shadow 0.2s ease;
 }
-.ni .top::after {
-  content: "";
-  position: absolute;
-  left: 18%;
-  right: 18%;
-  bottom: 0;
-  height: 3px;
-  background: var(--red);
-  transform: scaleX(0);
-  transition: transform 0.25s;
-}
-.ni:hover .top::after,
-.ni:focus-within .top::after,
-.ni .top[aria-current="page"]::after {
-  transform: scaleX(1);
+.ni:hover .top,
+.ni:focus-within .top,
+.ni .top[aria-current="page"] {
+  color: var(--red);
+  transform: translateY(-3px);
+  text-shadow:
+    0 1px 0 var(--yellow),
+    0 2px 0 var(--yellow),
+    0 3px 0 var(--yellow),
+    0 6px 8px rgba(36, 22, 20, 0.25);
 }
 .sub {
   list-style: none;
