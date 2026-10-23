@@ -250,7 +250,6 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   function open(n = 0) {
     dim.hidden = false;
     requestAnimationFrame(() => dim.classList.add("show"));
-    $("#reopen").hidden = true;
     show(n);
     window.heroPause && heroPause(true);
   }
@@ -259,7 +258,6 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     dim.classList.remove("show");
     setTimeout(() => {
       dim.hidden = true;
-      $("#reopen").hidden = false;
     }, 300);
     window.heroPause && heroPause(false);
   }
@@ -292,7 +290,6 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     } catch (e) {}
     close();
   };
-  $("#reopen").onclick = () => open(0);
   $$("[data-open]").forEach((b) => (b.onclick = () => open(+b.dataset.open)));
   let hide = false;
   try {
@@ -302,8 +299,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!dim.hidden) close();
   };
   window.noticeStart = () => {
-    if (hide) $("#reopen").hidden = false;
-    else setTimeout(() => open(0), 400);
+    if (!hide) setTimeout(() => open(0), 400);
   };
 })();
 
@@ -317,7 +313,6 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     g.classList.add("out");
     document.body.style.overflow = "hidden";
     window.heroPause && heroPause(true);
-    $("#reopen").hidden = true;
     scrollTo(0, 0);
     requestAnimationFrame(() => requestAnimationFrame(() => g.classList.remove("out")));
   }
@@ -333,7 +328,6 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
         g.hidden = true;
         window.heroPause && heroPause(false);
         if (target === "main") window.noticeStart();
-        else $("#reopen").hidden = false;
       },
       reduce ? 0 : 800,
     );
@@ -360,7 +354,6 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     g.hidden = true;
     const onSub = /^#(brand|menu|event|store|notice|fr|voice|poem|kit|order)/.test(location.hash);
     if (!onSub) window.noticeStart();
-    else $("#reopen").hidden = false;
   } else {
     document.body.style.overflow = "hidden";
     window.heroPause && heroPause(true);
@@ -1064,4 +1057,14 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     v.currentTime = 0;
     v.load();
   });
+})();
+
+/* 맨 위로 버튼: 스크롤을 내리면 캐릭터가 나타남 */
+(() => {
+  const b = $("#totop");
+  const on = () => b.classList.toggle("show", scrollY > 600);
+  addEventListener("scroll", on, { passive: true });
+  addEventListener("hashchange", on);
+  on();
+  b.onclick = () => scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
 })();
